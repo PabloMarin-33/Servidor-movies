@@ -26,3 +26,10 @@ app.listen(PORT, () => console.log("Servidor funcionando en el puerto 3000"))
 vista lo que el cliente ve (navegador, GUI, TUI), 
 controlador el puente entre las dos anteriores,
 todo esto compone que se utiliza en proceso de desarrollo en proyectos*/
+
+/*
+¿Servidor HTTP?
+SQLite3: es una base de datos en debido
+Typescript y diferecias entre TS y JS
+Que hace transaction
+*/
