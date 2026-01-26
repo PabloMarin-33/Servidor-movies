@@ -6,6 +6,7 @@ import type { Request, Response, NextFunction } from "express";
 const app = express();
 const PORT = 3000
 const db = await initDB()
+app.use(express.json())
 
 const logMiddleware = (req: Request, res: Response, next: NextFunction) => {
     //codigo
@@ -13,9 +14,13 @@ const logMiddleware = (req: Request, res: Response, next: NextFunction) => {
      if(req.method === "GET"){
         console.log(req.query)
     }
+    if(req.method === "POST"){
+        console.log(req.body)
+    }
     next()
 }
 
+app.use(express.static("public"))
 app.use(logMiddleware)
 
 app.get("/movies", (req, res) => {
@@ -31,6 +36,9 @@ app.get("/movies", (req, res) => {
 
 })
 
+app.post("/movies", (req, res) => {
+    res.send("Pelicula insertada")
+})
 
 app.listen(PORT, () => {
     console.log(`Servidor funcionando en puerto ${PORT}`)
