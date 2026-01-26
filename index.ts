@@ -2,7 +2,8 @@
 import { initDB } from "./db/init";
 import { getMovies } from "./models/movies";
 import  express  from "express";// bun add express , bun add @types/express
-import type { Request, Response, NextFunction } from "express";
+import { type Request, Response, type NextFunction } from "express";
+import { insertMovie } from "./models/movies";
 const app = express();
 const PORT = 3000
 const db = await initDB()
@@ -37,8 +38,13 @@ app.get("/movies", (req, res) => {
 })
 
 app.post("/movies", (req, res) => {
-    res.send("Pelicula insertada")
+    const{title, genres } = req.body
+    const respuesta = insertMovie(db, title, genres)
+    res.send(respuesta)
 })
+
+app.put("/movies")
+app.delete("/movies")
 
 app.listen(PORT, () => {
     console.log(`Servidor funcionando en puerto ${PORT}`)
