@@ -43,9 +43,6 @@ app.post("/movies", (req, res) => {
     res.send(respuesta)
 })
 
-app.put("/movies")
-app.delete("/movies")
-
 app.listen(PORT, () => {
     console.log(`Servidor funcionando en puerto ${PORT}`)
 })
